@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="exercises">
+        <item>Отдых|x30|relax.gif</item> <!-- 0 -->
+        <item>Боковая скрутка|x10|bokovaya_skrutka.gif</item> <!-- 1 -->
+        <item>Боковые ножницы|x12|bokovie_nozhnici.gif</item> <!-- 2 -->
+        <item>Боковые повороты ноги и руки|x14|bokovie_povoroti_nogi_i_ruki.gif</item> <!-- 3 -->
+        <item>Ласточка передняя|x20|lastochka_perednyaya.gif</item> <!-- 4 -->
+        <item>Ласточка задняя|x20|lastochka_zadnyaya.gif</item> <!-- 5 -->
+        <item>Наклон с выгибом|x10|naklon_s_vigibom.gif</item> <!-- 6 -->
+        <item>Наклон со стойкой|x10|naklon_so_stoikoi.gif</item> <!-- 7 -->
+        <item>Отжимания|x15|otzhimanie.gif</item> <!-- 8 -->
+        <item>Перекрёстный наклон|x12|perekrestnii_naklon.gif</item> <!-- 9 -->
+        <item>Перекрёстный захлёст ноги|x12|perekrestnii_zahlest_nogi.gif</item> <!-- 10 -->
+        <item>Пресс группировка|x20|press_gruppirovka.gif</item> <!-- 11 -->
+        <item>Присяд с прыжком|x20|pricyad_c_prizhkom.gif</item> <!-- 12 -->
+        <item>Присяд с выпадом|x20|prisyad_s_vipadom.gif</item> <!-- 13 -->
+        <item>Шаг со скручиванием|x30|shag_so_skruchivaniem.gif</item> <!-- 14 -->
+        <item>Скручивание тазовых мышц|x10|skruchivanie_tazovih_mishc.gif</item> <!-- 15 -->
+        <item>Стойка ножницы|x10|stoyka_nozhnici.gif</item> <!-- 16 -->
+        <item>Поворот таза в стойке|x30|povorot_taza_v_stoike.gif</item> <!-- 17 -->
+    </string-array>
+    <string-array name="day_exercises">
+        <item>12,3,8,0,7,2,15</item> <!-- Day 1 -->
+        <item>5,7,4,0,1,16,12,0,6,2,11</item> <!-- Day 2 -->
+        <item>11,3,2,0,10,9,15,0,12,14,7</item> <!-- Day 3 -->
+        <item>13,6,5,0,8,12,4,0,7,9,11</item> <!-- Day 4 -->
+        <item>2,10,8,0,14,16,5,0,3,1,9,0,12,3,8</item> <!-- Day 5 -->
+        <item>1,7,9,0,10,8,14,0,13,6,4,0,11,3,2</item> <!-- Day 6 -->
+        <item>4,7,11,0,9,5,12,0,12,11,17,0,13,6,5</item> <!-- Day 7 -->
+    </string-array>
+</resources>
