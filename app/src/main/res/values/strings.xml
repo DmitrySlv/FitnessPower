@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FitnessPower</string>
+    <!-- Splash Activity -->
+    <string name="splash_name_app_text">FITNESS POWER</string>
+    <!-- Days Fragment -->
+    <string name="slogan">На пути к совершенству</string>
 </resources>
