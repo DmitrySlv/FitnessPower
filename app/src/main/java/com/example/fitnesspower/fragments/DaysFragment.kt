@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnesspower.R
+import com.example.fitnesspower.adapters.DaysAdapter
 import com.example.fitnesspower.databinding.FragmentDaysBinding
 import com.example.fitnesspower.models.DayModel
 
@@ -24,9 +27,21 @@ class DaysFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRcView()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun initRcView() = with(binding) {
+        val adapter = DaysAdapter()
+        rcViewDays.layoutManager = LinearLayoutManager(requireActivity())
+        rcViewDays.adapter = adapter
+        adapter.submitList(fillDaysArray())
     }
 
     private fun fillDaysArray(): ArrayList<DayModel> {

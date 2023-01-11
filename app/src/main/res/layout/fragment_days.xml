@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black_main_bg"
     tools:context=".fragments.DaysFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcViewDays"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"

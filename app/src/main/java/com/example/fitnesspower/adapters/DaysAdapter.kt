@@ -27,8 +27,13 @@ class DaysAdapter: ListAdapter<DayModel, DaysAdapter.DayHolder>(DiffUtilDaysAdap
         fun setData(dayModel: DayModel) = with(binding) {
             val name = root.context.getString(R.string.day) + " ${adapterPosition + 1}"
             tvName.text = name
-            val exCounter = dayModel.exercises.split(",").size.toString()
+            val exCounter = dayModel.exercises.split(",").size.toString() + PROBEL +
+            root.context.getString(R.string.exercise)
             tvCounter.text = exCounter
         }
+    }
+
+    companion object {
+        private const val PROBEL = " "
     }
 }

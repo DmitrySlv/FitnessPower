@@ -8,9 +8,7 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"
         app:cardCornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textColor="@color/blue"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
 
@@ -40,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textColor="@color/red"
+                android:textColor="@color/blue"
                 android:textStyle="italic" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -49,7 +47,9 @@
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="false"
         android:elevation="10dp"
+        android:focusable="auto"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cardView" />
