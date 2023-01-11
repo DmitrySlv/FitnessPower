@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.fitnesspower.R
 import com.example.fitnesspower.databinding.FragmentDaysBinding
+import com.example.fitnesspower.models.DayModel
 
 
 class DaysFragment : Fragment() {
@@ -26,6 +27,14 @@ class DaysFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun fillDaysArray(): ArrayList<DayModel> {
+        val tempArray = arrayListOf<DayModel>()
+        resources.getStringArray(R.array.day_exercises).forEach {
+            tempArray.add(DayModel(it, false))
+        }
+        return tempArray
     }
 
     companion object {
