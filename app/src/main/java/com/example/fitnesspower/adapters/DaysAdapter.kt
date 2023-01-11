@@ -9,7 +9,7 @@ import com.example.fitnesspower.R
 import com.example.fitnesspower.databinding.DaysListItemBinding
 import com.example.fitnesspower.models.DayModel
 
-class DaysAdapter: ListAdapter<DayModel, DaysAdapter.DayHolder>(DiffUtilDaysAdapter) {
+class DaysAdapter(private val listener: Listener): ListAdapter<DayModel, DaysAdapter.DayHolder>(DiffUtilDaysAdapter) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayHolder {
         val view = LayoutInflater.from(parent.context)
@@ -18,19 +18,24 @@ class DaysAdapter: ListAdapter<DayModel, DaysAdapter.DayHolder>(DiffUtilDaysAdap
     }
 
     override fun onBindViewHolder(holder: DayHolder, position: Int) {
-        holder.setData(getItem(position))
+        holder.setData(getItem(position), listener)
     }
 
     class DayHolder(view: View): ViewHolder(view) {
         private val binding = DaysListItemBinding.bind(view)
 
-        fun setData(dayModel: DayModel) = with(binding) {
+        fun setData(dayModel: DayModel, listener: Listener) = with(binding) {
             val name = root.context.getString(R.string.day) + " ${adapterPosition + 1}"
             tvName.text = name
             val exCounter = dayModel.exercises.split(",").size.toString() + PROBEL +
             root.context.getString(R.string.exercise)
             tvCounter.text = exCounter
+            itemView.setOnClickListener { listener.onClick(dayModel) }
         }
+    }
+
+    interface Listener {
+        fun onClick(day: DayModel)
     }
 
     companion object {

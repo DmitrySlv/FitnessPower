@@ -5,15 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnesspower.R
 import com.example.fitnesspower.adapters.DaysAdapter
 import com.example.fitnesspower.databinding.FragmentDaysBinding
 import com.example.fitnesspower.models.DayModel
+import com.example.fitnesspower.utils.FragmentManager
 
 
-class DaysFragment : Fragment() {
+class DaysFragment: Fragment(), DaysAdapter.Listener {
 
     private var _binding: FragmentDaysBinding? = null
     private val binding: FragmentDaysBinding
@@ -38,8 +40,8 @@ class DaysFragment : Fragment() {
     }
 
     private fun initRcView() = with(binding) {
-        val adapter = DaysAdapter()
-        rcViewDays.layoutManager = LinearLayoutManager(requireActivity())
+        val adapter = DaysAdapter(this@DaysFragment)
+        rcViewDays.layoutManager = LinearLayoutManager(activity as AppCompatActivity)
         rcViewDays.adapter = adapter
         adapter.submitList(fillDaysArray())
     }
@@ -50,6 +52,13 @@ class DaysFragment : Fragment() {
             tempArray.add(DayModel(it, false))
         }
         return tempArray
+    }
+
+    override fun onClick(day: DayModel) {
+
+        FragmentManager.setFragment(
+            ExercisesListFragment.newInstance(), activity as AppCompatActivity
+        )
     }
 
     companion object {
