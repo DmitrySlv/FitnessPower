@@ -12,6 +12,7 @@ import com.example.fitnesspower.R
 import com.example.fitnesspower.adapters.DaysAdapter
 import com.example.fitnesspower.databinding.FragmentDaysBinding
 import com.example.fitnesspower.models.DayModel
+import com.example.fitnesspower.models.ExerciseModel
 import com.example.fitnesspower.utils.FragmentManager
 
 
@@ -54,8 +55,18 @@ class DaysFragment: Fragment(), DaysAdapter.Listener {
         return tempArray
     }
 
-    override fun onClick(day: DayModel) {
+    private fun fillExerciseList(day: DayModel) {
+        val tempList = arrayListOf<ExerciseModel>()
+        day.exercises.split(",").forEach {
+            val exerciseList = resources.getStringArray(R.array.exercises)
+            val exercise = exerciseList[it.toInt()]
+            val exerciseArray = exercise.split("|")
+            tempList.add(ExerciseModel(exerciseArray[0], exerciseArray[1], exerciseArray[2]))
+        }
+    }
 
+    override fun onClick(day: DayModel) {
+        fillExerciseList(day)
         FragmentManager.setFragment(
             ExercisesListFragment.newInstance(), activity as AppCompatActivity
         )

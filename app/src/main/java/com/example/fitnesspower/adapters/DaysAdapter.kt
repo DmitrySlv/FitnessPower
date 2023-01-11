@@ -24,13 +24,13 @@ class DaysAdapter(private val listener: Listener): ListAdapter<DayModel, DaysAda
     class DayHolder(view: View): ViewHolder(view) {
         private val binding = DaysListItemBinding.bind(view)
 
-        fun setData(dayModel: DayModel, listener: Listener) = with(binding) {
+        fun setData(day: DayModel, listener: Listener) = with(binding) {
             val name = root.context.getString(R.string.day) + " ${adapterPosition + 1}"
             tvName.text = name
-            val exCounter = dayModel.exercises.split(",").size.toString() + PROBEL +
+            val exCounter = day.exercises.split(",").size.toString() + PROBEL +
             root.context.getString(R.string.exercise)
             tvCounter.text = exCounter
-            itemView.setOnClickListener { listener.onClick(dayModel) }
+            itemView.setOnClickListener { listener.onClick(day) }
         }
     }
 
