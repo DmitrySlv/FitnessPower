@@ -68,7 +68,6 @@ class DaysFragment: Fragment(), DaysAdapter.Listener {
         }
         model.listExercise.value = tempList
         model.listExercise.observe(viewLifecycleOwner) {
-
         }
     }
 
