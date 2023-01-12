@@ -9,4 +9,6 @@
     <string name="exercise">упражнений</string>
     <!-- Waiting Fragment -->
     <string name="waiting_message">Старт через:</string>
+    <!-- fragment_waiting -->
+    <string name="start">Начать</string>
 </resources>

@@ -5,8 +5,10 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.fitnesspower.databinding.FragmentWaitingBinding
+import com.example.fitnesspower.utils.TimeUtils
 
 
 class WaitingFragment : Fragment() {
@@ -28,6 +30,7 @@ class WaitingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.pBar.max = COUNT_DOWN_TIME.toInt()
+        startTimer()
     }
 
     override fun onDestroyView() {
@@ -35,21 +38,23 @@ class WaitingFragment : Fragment() {
         _binding = null
     }
 
-    private fun startTimer() = with(binding) {
-        timer = object: CountDownTimer(COUNT_DOWN_TIME, 100) {
-
-            override fun onTick(restTime: Long) {
-               pBar.progress = restTime.toInt()
-            }
-
-            override fun onFinish() {
-            }
-        }.start()
-    }
-
     override fun onDetach() {
         super.onDetach()
         timer.cancel()
+    }
+
+    private fun startTimer() = with(binding) {
+        timer = object: CountDownTimer(COUNT_DOWN_TIME, 1) {
+
+            override fun onTick(restTime: Long) {
+                tvTimer.text = TimeUtils.getTime(restTime)
+                pBar.progress = restTime.toInt()
+            }
+
+            override fun onFinish() {
+                Toast.makeText(activity, "Закончили!", Toast.LENGTH_LONG).show()
+            }
+        }.start()
     }
 
     companion object {

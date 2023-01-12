@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnesspower.adapters.ExerciseAdapter
 import com.example.fitnesspower.databinding.FragmentExercisesListBinding
+import com.example.fitnesspower.utils.FragmentManager
 import com.example.fitnesspower.viewModels.MainViewModel
 
 
@@ -46,6 +48,9 @@ class ExercisesListFragment : Fragment() {
         exerciseAdapter = ExerciseAdapter()
         rcView.layoutManager = LinearLayoutManager(activity)
         rcView.adapter = exerciseAdapter
+        bStart.setOnClickListener {
+            FragmentManager.setFragment(WaitingFragment.newInstance(), activity as AppCompatActivity)
+        }
     }
 
     companion object {
