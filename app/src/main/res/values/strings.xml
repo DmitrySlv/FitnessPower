@@ -11,4 +11,6 @@
     <string name="waiting_message">Старт через:</string>
     <!-- fragment_waiting -->
     <string name="start">Начать</string>
+    <!-- fragment_exercise -->
+    <string name="next">Далее</string>
 </resources>
