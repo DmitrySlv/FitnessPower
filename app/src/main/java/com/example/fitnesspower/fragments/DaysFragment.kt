@@ -1,19 +1,20 @@
 package com.example.fitnesspower.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnesspower.R
 import com.example.fitnesspower.adapters.DaysAdapter
 import com.example.fitnesspower.databinding.FragmentDaysBinding
 import com.example.fitnesspower.models.DayModel
 import com.example.fitnesspower.models.ExerciseModel
 import com.example.fitnesspower.utils.FragmentManager
+import com.example.fitnesspower.viewModels.MainViewModel
 
 
 class DaysFragment: Fragment(), DaysAdapter.Listener {
@@ -21,6 +22,8 @@ class DaysFragment: Fragment(), DaysAdapter.Listener {
     private var _binding: FragmentDaysBinding? = null
     private val binding: FragmentDaysBinding
         get() = _binding ?: throw RuntimeException("FragmentDaysBinding is null")
+
+    private val model: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,6 +65,10 @@ class DaysFragment: Fragment(), DaysAdapter.Listener {
             val exercise = exerciseList[it.toInt()]
             val exerciseArray = exercise.split("|")
             tempList.add(ExerciseModel(exerciseArray[0], exerciseArray[1], exerciseArray[2]))
+        }
+        model.listExercise.value = tempList
+        model.listExercise.observe(viewLifecycleOwner) {
+
         }
     }
 
