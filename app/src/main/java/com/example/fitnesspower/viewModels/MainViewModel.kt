@@ -9,5 +9,4 @@ class MainViewModel: ViewModel() {
 
     val listExercise = MutableLiveData<ArrayList<ExerciseModel>>()
 
-
 }
