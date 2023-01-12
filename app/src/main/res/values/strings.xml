@@ -7,4 +7,6 @@
     <!-- Days Adapter -->
     <string name="day">День:</string>
     <string name="exercise">упражнений</string>
+    <!-- Waiting Fragment -->
+    <string name="waiting_message">Старт через:</string>
 </resources>
