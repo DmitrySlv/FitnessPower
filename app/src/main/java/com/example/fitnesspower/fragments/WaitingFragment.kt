@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.fitnesspower.databinding.FragmentWaitingBinding
+import com.example.fitnesspower.utils.FragmentManager
 import com.example.fitnesspower.utils.TimeUtils
 
 
@@ -52,7 +54,10 @@ class WaitingFragment : Fragment() {
             }
 
             override fun onFinish() {
-                Toast.makeText(activity, "Закончили!", Toast.LENGTH_LONG).show()
+               FragmentManager.setFragment(
+                   ExercisesFragment.newInstance(),
+                   activity as AppCompatActivity
+               )
             }
         }.start()
     }
