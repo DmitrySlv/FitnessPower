@@ -1,6 +1,7 @@
 package com.example.fitnesspower.fragments
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnesspower.adapters.ExerciseAdapter
 import com.example.fitnesspower.databinding.FragmentExerciseBinding
 import com.example.fitnesspower.databinding.FragmentExercisesListBinding
+import com.example.fitnesspower.fragments.WaitingFragment.Companion.COUNT_DOWN_TIME
 import com.example.fitnesspower.models.ExerciseModel
 import com.example.fitnesspower.utils.FragmentManager
+import com.example.fitnesspower.utils.TimeUtils
 import com.example.fitnesspower.viewModels.MainViewModel
 import pl.droidsonroids.gif.GifDrawable
 
@@ -27,6 +30,7 @@ class ExercisesFragment : Fragment() {
     private val model: MainViewModel by activityViewModels()
     private var exerciseCounter = 0
     private var exercisesList: ArrayList<ExerciseModel>? = null
+    private var timer: CountDownTimer? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,19 +56,48 @@ class ExercisesFragment : Fragment() {
         _binding = null
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        timer?.cancel()
+    }
+
     private fun nextExercise() {
         if (exerciseCounter < exercisesList?.size!!) {
-            val ex = exercisesList?.get(exerciseCounter++)
+            val ex = exercisesList?.get(exerciseCounter++) ?: return
             showExercise(ex)
+            setExerciseType(ex)
         } else {
-            Toast.makeText(activity, "Конец", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, "Закончили", Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun showExercise(exercise: ExerciseModel?) = with(binding) {
-        if (exercise == null) return@with
+    private fun showExercise(exercise: ExerciseModel) = with(binding) {
         imMain.setImageDrawable(GifDrawable(root.context.assets, exercise.image))
         tvName.text = exercise.name
+    }
+
+    private fun setExerciseType(exercise: ExerciseModel) {
+        if (exercise.time.startsWith("x")) {
+            binding.tvTime.text = exercise.time
+        } else {
+            startTimer(exercise)
+        }
+    }
+
+    private fun startTimer(exercise: ExerciseModel) = with(binding) {
+        progressBar.max = exercise.time.toInt() * 1000
+        timer?.cancel()
+        timer = object: CountDownTimer(exercise.time.toLong() * 1000, 1) {
+
+            override fun onTick(restTime: Long) {
+                tvTime.text = TimeUtils.getTime(restTime)
+                progressBar.progress = restTime.toInt()
+            }
+
+            override fun onFinish() {
+                nextExercise()
+            }
+        }.start()
     }
 
     companion object {
