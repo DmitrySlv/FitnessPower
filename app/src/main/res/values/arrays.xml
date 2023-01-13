@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="exercises">
-        <item>Отдых|20|relax2.gif</item> <!-- 0 -->
+        <item>Отдых|20|relax5.gif</item> <!-- 0 -->
         <item>Боковая скрутка|x10|bokovaya_skrutka.gif</item> <!-- 1 -->
         <item>Боковые ножницы|x12|bokovie_nozhnici.gif</item> <!-- 2 -->
         <item>Боковые повороты ноги и руки|x14|bokovie_povoroti_nogi_i_ruki.gif</item> <!-- 3 -->

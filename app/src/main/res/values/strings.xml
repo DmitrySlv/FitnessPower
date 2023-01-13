@@ -12,5 +12,8 @@
     <!-- fragment_waiting -->
     <string name="start">Начать</string>
     <!-- fragment_exercise -->
-    <string name="next">Далее</string>
+    <string name="next">Следующее</string>
+    <string name="next_exercise">Далее:</string>
+    <!-- Exercise Fragment -->
+    <string name="done">Закончили!</string>
 </resources>

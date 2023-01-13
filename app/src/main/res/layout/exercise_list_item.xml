@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:text="x30"
+            android:textColor="@color/blue_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/checkBox"
             app:layout_constraintTop_toTopOf="parent" />

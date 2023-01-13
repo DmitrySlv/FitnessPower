@@ -67,6 +67,6 @@ class WaitingFragment : Fragment() {
         @JvmStatic
         fun newInstance() = WaitingFragment()
 
-        const val COUNT_DOWN_TIME = 11000L
+        const val COUNT_DOWN_TIME = 6000L
     }
 }

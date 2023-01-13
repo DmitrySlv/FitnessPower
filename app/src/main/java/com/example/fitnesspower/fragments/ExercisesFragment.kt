@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fitnesspower.R
 import com.example.fitnesspower.adapters.ExerciseAdapter
 import com.example.fitnesspower.databinding.FragmentExerciseBinding
 import com.example.fitnesspower.databinding.FragmentExercisesListBinding
@@ -66,6 +67,7 @@ class ExercisesFragment : Fragment() {
             val ex = exercisesList?.get(exerciseCounter++) ?: return
             showExercise(ex)
             setExerciseType(ex)
+            showNextExercise()
         } else {
             Toast.makeText(activity, "Закончили", Toast.LENGTH_LONG).show()
         }
@@ -76,11 +78,33 @@ class ExercisesFragment : Fragment() {
         tvName.text = exercise.name
     }
 
-    private fun setExerciseType(exercise: ExerciseModel) {
+    private fun setExerciseType(exercise: ExerciseModel) = with(binding) {
         if (exercise.time.startsWith("x")) {
-            binding.tvTime.text = exercise.time
+            tvTime.text = exercise.time
+            timer?.cancel()
+            progressBar.progress = 0
         } else {
             startTimer(exercise)
+        }
+    }
+
+    private fun showNextExercise() = with(binding) {
+        if (exerciseCounter < exercisesList?.size!!) {
+            val ex = exercisesList?.get(exerciseCounter) ?: return
+            imNext.setImageDrawable(GifDrawable(root.context.assets, ex.image))
+            setTimeType(ex)
+        } else {
+            imNext.setImageDrawable(GifDrawable(root.context.assets, "congrations2.gif"))
+            tvNextName.text = getText(R.string.done)
+        }
+    }
+
+    private fun setTimeType(ex: ExerciseModel) = with(binding) {
+        if (ex.time.startsWith("x")) {
+            tvNextName.text = String.format(ex.name + ": " + ex.time)
+        } else {
+            val name = ex.name + ": ${TimeUtils.getTime(ex.time.toLong() * 1000)}"
+            tvNextName.text = name
         }
     }
 
