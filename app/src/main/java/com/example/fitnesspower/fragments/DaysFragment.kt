@@ -57,7 +57,7 @@ class DaysFragment: Fragment(), DaysAdapter.Listener {
     private fun fillDaysArray(): ArrayList<DayModel> {
         val tempArray = arrayListOf<DayModel>()
         resources.getStringArray(R.array.day_exercises).forEach {
-            tempArray.add(DayModel(it, false))
+            tempArray.add(DayModel(it, 0, false))
         }
         return tempArray
     }
@@ -68,7 +68,7 @@ class DaysFragment: Fragment(), DaysAdapter.Listener {
             val exerciseList = resources.getStringArray(R.array.exercises)
             val exercise = exerciseList[it.toInt()]
             val exerciseArray = exercise.split("|")
-            tempList.add(ExerciseModel(exerciseArray[0], exerciseArray[1], exerciseArray[2]))
+            tempList.add(ExerciseModel(exerciseArray[0], exerciseArray[1], false, exerciseArray[2]))
         }
         model.listExercise.value = tempList
         model.listExercise.observe(viewLifecycleOwner) {

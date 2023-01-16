@@ -5,17 +5,12 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnesspower.R
-import com.example.fitnesspower.adapters.ExerciseAdapter
 import com.example.fitnesspower.databinding.FragmentExerciseBinding
-import com.example.fitnesspower.databinding.FragmentExercisesListBinding
-import com.example.fitnesspower.fragments.WaitingFragment.Companion.COUNT_DOWN_TIME
 import com.example.fitnesspower.models.ExerciseModel
 import com.example.fitnesspower.utils.FragmentManager
 import com.example.fitnesspower.utils.TimeUtils
@@ -45,6 +40,7 @@ class ExercisesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        exerciseCounter = model.getExerciseCount()
         actionBar = (activity as AppCompatActivity).supportActionBar
         model.listExercise.observe(viewLifecycleOwner) {
             exercisesList = it
@@ -62,7 +58,7 @@ class ExercisesFragment : Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        model.savePref(model.currentDay.toString(), exerciseCounter)
+        model.savePref(model.currentDay.toString(), exerciseCounter - 1)
         timer?.cancel()
     }
 

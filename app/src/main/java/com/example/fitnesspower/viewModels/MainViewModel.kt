@@ -15,8 +15,8 @@ class MainViewModel: ViewModel() {
         pref?.edit()?.putInt(key, value)?.apply()
     }
 
-    fun getPref(key: String): Int {
-        return pref?.getInt(key, DEFAULT_VALUE) ?: RETURN_VALUE
+    fun getExerciseCount(): Int {
+        return pref?.getInt(currentDay.toString(), DEFAULT_VALUE) ?: RETURN_VALUE
     }
 
     companion object {

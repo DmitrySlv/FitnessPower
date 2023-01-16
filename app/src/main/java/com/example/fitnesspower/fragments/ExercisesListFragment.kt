@@ -38,6 +38,9 @@ class ExercisesListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         init()
         model.listExercise.observe(viewLifecycleOwner) {
+            for (i in 0 until model.getExerciseCount()) {
+                it[i] = it[i].copy(isDone = true)
+            }
           exerciseAdapter.submitList(it)
         }
     }
