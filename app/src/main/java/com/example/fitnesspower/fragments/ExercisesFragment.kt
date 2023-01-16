@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -32,6 +33,7 @@ class ExercisesFragment : Fragment() {
     private var exerciseCounter = 0
     private var exercisesList: ArrayList<ExerciseModel>? = null
     private var timer: CountDownTimer? = null
+    private var actionBar: ActionBar? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +45,7 @@ class ExercisesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        actionBar = (activity as AppCompatActivity).supportActionBar
         model.listExercise.observe(viewLifecycleOwner) {
             exercisesList = it
             nextExercise()
@@ -76,6 +79,8 @@ class ExercisesFragment : Fragment() {
     private fun showExercise(exercise: ExerciseModel) = with(binding) {
         imMain.setImageDrawable(GifDrawable(root.context.assets, exercise.image))
         tvName.text = exercise.name
+        val title = "$exerciseCounter / ${exercisesList?.size}"
+        actionBar?.title = title
     }
 
     private fun setExerciseType(exercise: ExerciseModel) = with(binding) {

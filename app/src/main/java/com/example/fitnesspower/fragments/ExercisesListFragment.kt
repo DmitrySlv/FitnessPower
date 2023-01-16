@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fitnesspower.R
 import com.example.fitnesspower.adapters.ExerciseAdapter
 import com.example.fitnesspower.databinding.FragmentExercisesListBinding
 import com.example.fitnesspower.utils.FragmentManager
@@ -20,6 +22,7 @@ class ExercisesListFragment : Fragment() {
     private val binding: FragmentExercisesListBinding
         get() = _binding ?: throw RuntimeException("FragmentExercisesListBinding is null")
 
+    private var actionBar: ActionBar? = null
     private val model: MainViewModel by activityViewModels()
     private lateinit var exerciseAdapter: ExerciseAdapter
 
@@ -45,6 +48,8 @@ class ExercisesListFragment : Fragment() {
     }
 
     private fun init() = with(binding) {
+        actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.title = getString(R.string.exercises)
         exerciseAdapter = ExerciseAdapter()
         rcView.layoutManager = LinearLayoutManager(activity)
         rcView.adapter = exerciseAdapter

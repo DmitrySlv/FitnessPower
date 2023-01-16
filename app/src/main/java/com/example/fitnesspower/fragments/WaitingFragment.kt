@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.fitnesspower.R
 import com.example.fitnesspower.databinding.FragmentWaitingBinding
 import com.example.fitnesspower.utils.FragmentManager
 import com.example.fitnesspower.utils.TimeUtils
@@ -19,6 +21,7 @@ class WaitingFragment : Fragment() {
     private val binding: FragmentWaitingBinding
         get() = _binding ?: throw RuntimeException("FragmentWaitingBinding is null")
 
+    private var actionBar: ActionBar? = null
     lateinit var timer: CountDownTimer
 
     override fun onCreateView(
@@ -31,6 +34,8 @@ class WaitingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.title = getString(R.string.waiting)
         binding.pBar.max = COUNT_DOWN_TIME.toInt()
         startTimer()
     }

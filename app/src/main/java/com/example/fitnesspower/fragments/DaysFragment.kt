@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -22,6 +23,7 @@ class DaysFragment: Fragment(), DaysAdapter.Listener {
     private var _binding: FragmentDaysBinding? = null
     private val binding: FragmentDaysBinding
         get() = _binding ?: throw RuntimeException("FragmentDaysBinding is null")
+    private var actionBar: ActionBar? = null
 
     private val model: MainViewModel by activityViewModels()
 
@@ -45,6 +47,8 @@ class DaysFragment: Fragment(), DaysAdapter.Listener {
 
     private fun initRcView() = with(binding) {
         val adapter = DaysAdapter(this@DaysFragment)
+        actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.title = getString(R.string.days)
         rcViewDays.layoutManager = LinearLayoutManager(activity as AppCompatActivity)
         rcViewDays.adapter = adapter
         adapter.submitList(fillDaysArray())

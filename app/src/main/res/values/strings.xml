@@ -20,4 +20,9 @@
     <string name="finish_day_title">Поздравляем!</string>
     <string name="finish_day_description">На сегодня это всё</string>
     <string name="button_done">Завершить тренировку</string>
+
+
+    <string name="days">Дни тренировки</string>
+    <string name="exercises">Упражнения</string>
+    <string name="waiting">Приготовьтесь</string>
 </resources>
