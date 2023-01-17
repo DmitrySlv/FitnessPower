@@ -1,9 +1,7 @@
 package com.example.fitnesspower.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -23,9 +21,15 @@ class DaysFragment: Fragment(), DaysAdapter.Listener {
     private var _binding: FragmentDaysBinding? = null
     private val binding: FragmentDaysBinding
         get() = _binding ?: throw RuntimeException("FragmentDaysBinding is null")
-    private var actionBar: ActionBar? = null
 
+    private var actionBar: ActionBar? = null
     private val model: MainViewModel by activityViewModels()
+    private lateinit var adapter: DaysAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,8 +50,20 @@ class DaysFragment: Fragment(), DaysAdapter.Listener {
         _binding = null
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+       return inflater.inflate(R.menu.main_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.reset) {
+            model.pref?.edit()?.clear()?.apply()
+            adapter.submitList(fillDaysArray())
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun initRcView() = with(binding) {
-        val adapter = DaysAdapter(this@DaysFragment)
+        adapter = DaysAdapter(this@DaysFragment)
         actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.title = getString(R.string.days)
         rcViewDays.layoutManager = LinearLayoutManager(activity as AppCompatActivity)

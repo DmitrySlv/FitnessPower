@@ -22,6 +22,8 @@
     <string name="finish_day_title">Поздравляем!</string>
     <string name="finish_day_description">На сегодня это всё</string>
     <string name="button_done">Завершить тренировку</string>
+    <!-- main_menu -->
+    <string name="reset">Сбросить</string>
 
 
     <string name="days">Дни тренировки</string>
