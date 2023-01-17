@@ -47,17 +47,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7" />
+        app:layout_constraintGuide_percent="0.73" />
 
     <Button
         android:id="@+id/bDone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="3dp"
         android:backgroundTint="@color/blue_dark"
         android:text="@string/button_done"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imMain"
-        app:layout_constraintStart_toStartOf="@+id/imMain"
-        app:layout_constraintTop_toBottomOf="@+id/imMain" />
+        app:layout_constraintStart_toStartOf="@+id/imMain" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

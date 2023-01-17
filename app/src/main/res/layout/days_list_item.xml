@@ -31,15 +31,15 @@
                 android:text="TextView"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold|italic" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvCounter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textColor="@color/blue"
-                android:textStyle="italic" />
+                android:textColor="@color/blue_dark"
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

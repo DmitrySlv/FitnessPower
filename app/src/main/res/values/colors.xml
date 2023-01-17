@@ -11,4 +11,5 @@
     <color name="red">#CF1406</color>
     <color name="black_main_bg">#6A000000</color>
     <color name="blue_dark">#002A91</color>
+    <color name="blue_light">#C3DDF1</color>
 </resources>
