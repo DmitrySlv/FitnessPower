@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">FitnessPower</string>
+    <!-- Splash Activity -->
+    <string name="splash_name_app_text">FITNESS POWER</string>
+    <!-- Days Fragment -->
+    <string name="slogan">На пути к совершенству</string>
+    <string name="rest">Осталось:</string>
+    <string name="rest_days">дней</string>
+    <!-- Days Adapter -->
+    <string name="day">День:</string>
+    <string name="exercise">упражнений</string>
+    <!-- Waiting Fragment -->
+    <string name="waiting_message">Старт через:</string>
+    <!-- fragment_waiting -->
+    <string name="start">Начать</string>
+    <!-- fragment_exercise -->
+    <string name="next">Следующее</string>
+    <string name="next_exercise">Далее:</string>
+    <!-- Exercise Fragment -->
+    <string name="done">Закончили!</string>
+    <!-- Day Finish Fragment -->
+    <string name="finish_day_title">Поздравляем!</string>
+    <string name="finish_day_description">На сегодня это всё</string>
+    <string name="button_done">Завершить тренировку</string>
+    <!-- main_menu -->
+    <string name="reset">Сбросить</string>
+    <!-- Dialog Manager -->
+    <string name="alert">Внимание</string>
+    <string name="cancel">Отмена</string>
+    <string name="reset_days_message">Вы действительно хотите сбросить все дни тренировки?</string>
+    <string name="reset_day_message">Вы хотите сбросить этот день и повторить упражнения?</string>
+
+
+    <string name="days">Дни тренировки</string>
+    <string name="exercises">Упражнения</string>
+    <string name="waiting">Приготовьтесь</string>
 </resources>
