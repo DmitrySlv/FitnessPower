@@ -12,6 +12,7 @@ import com.example.fitnesspower.adapters.DaysAdapter
 import com.example.fitnesspower.databinding.FragmentDaysBinding
 import com.example.fitnesspower.models.DayModel
 import com.example.fitnesspower.models.ExerciseModel
+import com.example.fitnesspower.utils.DialogManager
 import com.example.fitnesspower.utils.FragmentManager
 import com.example.fitnesspower.viewModels.MainViewModel
 
@@ -56,8 +57,16 @@ class DaysFragment: Fragment(), DaysAdapter.Listener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.reset) {
-            model.pref?.edit()?.clear()?.apply()
-            adapter.submitList(fillDaysArray())
+            DialogManager.showDialog(
+                activity as AppCompatActivity,
+                R.string.reset_days_message,
+                object : DialogManager.Listener {
+                    override fun onClick() {
+                        model.pref?.edit()?.clear()?.apply()
+                        adapter.submitList(fillDaysArray())
+                    }
+                }
+            )
         }
         return super.onOptionsItemSelected(item)
     }
@@ -107,14 +116,33 @@ class DaysFragment: Fragment(), DaysAdapter.Listener {
     }
 
     override fun onClick(day: DayModel) {
-        fillExerciseList(day)
-        model.currentDay = day.dayNumber
-        FragmentManager.setFragment(
-            ExercisesListFragment.newInstance(), activity as AppCompatActivity
-        )
+        if (!day.isDone) {
+            fillExerciseList(day)
+            model.currentDay = day.dayNumber
+            FragmentManager.setFragment(
+                ExercisesListFragment.newInstance(), activity as AppCompatActivity
+            )
+        } else {
+            DialogManager.showDialog(
+                activity as AppCompatActivity,
+                R.string.reset_day_message,
+                object : DialogManager.Listener {
+                    override fun onClick() {
+                        model.savePref(day.dayNumber.toString(), DAY_VALUE)
+                        fillExerciseList(day)
+                        model.currentDay = day.dayNumber
+                        FragmentManager.setFragment(
+                            ExercisesListFragment.newInstance(), activity as AppCompatActivity
+                        )
+                    }
+                }
+            )
+        }
     }
 
     companion object {
+
+        private const val DAY_VALUE = 0
 
         @JvmStatic
         fun newInstance() = DaysFragment()

@@ -24,6 +24,11 @@
     <string name="button_done">Завершить тренировку</string>
     <!-- main_menu -->
     <string name="reset">Сбросить</string>
+    <!-- Dialog Manager -->
+    <string name="alert">Внимание</string>
+    <string name="cancel">Отмена</string>
+    <string name="reset_days_message">Вы действительно хотите сбросить все дни тренировки?</string>
+    <string name="reset_day_message">Вы хотите сбросить этот день и повторить упражнения?</string>
 
 
     <string name="days">Дни тренировки</string>
