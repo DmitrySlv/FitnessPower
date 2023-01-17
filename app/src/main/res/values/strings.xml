@@ -4,6 +4,8 @@
     <string name="splash_name_app_text">FITNESS POWER</string>
     <!-- Days Fragment -->
     <string name="slogan">На пути к совершенству</string>
+    <string name="rest">Осталось:</string>
+    <string name="rest_days">дней</string>
     <!-- Days Adapter -->
     <string name="day">День:</string>
     <string name="exercise">упражнений</string>

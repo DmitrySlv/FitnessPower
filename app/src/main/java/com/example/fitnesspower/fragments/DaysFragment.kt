@@ -57,12 +57,24 @@ class DaysFragment: Fragment(), DaysAdapter.Listener {
 
     private fun fillDaysArray(): ArrayList<DayModel> {
         val tempArray = arrayListOf<DayModel>()
+        var daysDoneCounter = 0
         resources.getStringArray(R.array.day_exercises).forEach {
             model.currentDay++
             val exCounter = it.split(",").size
             tempArray.add(DayModel(it, 0, model.getExerciseCount() == exCounter))
         }
+        binding.pBar.max = tempArray.size
+        tempArray.forEach {
+            if (it.isDone) daysDoneCounter++
+        }
+        updateRestDaysUI(tempArray.size - daysDoneCounter, tempArray.size)
         return tempArray
+    }
+
+    private fun updateRestDaysUI(restDays: Int, days: Int) = with(binding) {
+        val rDays = getString(R.string.rest) + " $restDays " + getString(R.string.rest_days)
+        tvRetDays.text = rDays
+        pBar.progress = days - restDays
     }
 
     private fun fillExerciseList(day: DayModel) {

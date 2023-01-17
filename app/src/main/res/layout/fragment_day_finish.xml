@@ -54,6 +54,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:backgroundTint="@color/blue_dark"
         android:text="@string/button_done"
         app:layout_constraintEnd_toEndOf="@+id/imMain"
         app:layout_constraintStart_toStartOf="@+id/imMain"
